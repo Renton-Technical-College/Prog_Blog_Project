@@ -114,7 +114,8 @@ namespace Project_Playground.Project_Steps
 
         public override string ToString()
         {
-            return FormattedString();
+            //return FormattedString();
+            return GetType().ToString();
         }
 
 
