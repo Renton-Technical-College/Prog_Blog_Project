@@ -39,6 +39,7 @@ namespace Project_Playground.Project_Steps
         } // btnCreatePost
 
 
+    
 
         private void DisplayBlogPost(Paragraph blogPost)
         {
@@ -51,7 +52,7 @@ namespace Project_Playground.Project_Steps
 
             int selectedIndex = lbBlogPosts.SelectedIndex;
             BlogPost selectedPost = posts[selectedIndex];
-            DisplayBlogPost(selectedPost.FullPost());
+            DisplayBlogPost(selectedPost.PostFormatted()); // From Post() to PostFormatted()
         }
 
         private void ClearBlogDisplay()

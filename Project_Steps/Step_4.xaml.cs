@@ -72,12 +72,19 @@ namespace Project_Playground.Project_Steps
             fdDisplay.Blocks.Clear();
         }
 
+
         private void btnGenColor_Click(object sender, RoutedEventArgs e)
         {
             string rValueString = txtR.Text;
             string gValueString = txtG.Text;
             string bValueString = txtB.Text;
 
+            // Before
+            byte r = byte.Parse(rValueString);
+            byte g = byte.Parse(rValueString);
+            byte b = byte.Parse(rValueString);
+
+            // After
             byte r = ColorFormat(rValueString);
             byte g = ColorFormat(gValueString);
             byte b = ColorFormat(bValueString);

@@ -17,25 +17,29 @@
             <Label Content="Header" HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/>
             <Label Content="Body" HorizontalAlignment="Left" Margin="27,90,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtHeader" HorizontalAlignment="Left" Margin="27,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="182"/>
+            
+            
             <RichTextBox Margin="10,121,17,61">
                 <FlowDocument>
                     <Paragraph>
-                        <Run x:Name="runBody" Text="RichTextBox"/>
+                        <Run x:Name="runBody" Text="This is example text"/>
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
+            
+            
             <Button x:Name="btnCreatePost" Content="Create Post" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top" Width="199" Height="35"  Click="btnCreatePost_Click"/>
         </Grid>
 
         <RichTextBox Grid.Column="1" >
             <FlowDocument x:Name="fdDisplay">
-                <Paragraph>
-                    <Run Text="RichTextBox"/>
-                </Paragraph>
+  
             </FlowDocument>
         </RichTextBox>
+        
+        
         <ListBox x:Name="lbBlogPosts" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="5,10,5,13" SelectionChanged="lbBlogPosts_SelectionChanged"/>
 
-
+        
     </Grid>
 </Window>

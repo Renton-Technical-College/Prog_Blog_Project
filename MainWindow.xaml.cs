@@ -26,6 +26,7 @@ namespace Project_Playground
         public MainWindow()
         {
             InitializeComponent();
+            new Step_4().Show();
         }
 
     }

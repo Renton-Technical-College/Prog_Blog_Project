@@ -16,8 +16,8 @@ namespace Project_Playground.Project_Steps
         string _header; // Holds Header value
         string _body; // Holds Body value
         DateTime _posted; // Holds time post was created
-        Brush _headerForeground;
-        Brush _bodyForground;
+        Brush _headerForeground; // Hold header color
+        Brush _bodyForground; // hold body color
 
         // Constructor
         public BlogPost(string header, string body)
@@ -66,8 +66,38 @@ namespace Project_Playground.Project_Steps
 
         }
 
+        public Paragraph PostFormatted()
+        {
+            // Date - Header
+            // Body
 
- 
+            string date = _posted.ToShortDateString();
+            string header = $"{date} - {_header}";
+            string space = $"\n\n";
+            string body = _body;
+
+            string full = header + space + body;
+
+            // Contains the Date - Header - And new lines
+            Run runHeader = new Run(header + space);
+            runHeader.FontSize = 22; 
+            runHeader.Foreground = _headerForeground; // Header Color
+
+            // Contains our body text
+            Run runBody = new Run(body);
+            runBody.Foreground = _bodyForground; // Body Color
+
+            // Create a paragraph object that holds our Run's
+            Paragraph paragraphFull = new Paragraph();
+            paragraphFull.Inlines.Add(runHeader);
+            paragraphFull.Inlines.Add(runBody); 
+
+            // Return that paragraph
+            return paragraphFull;
+
+        } // PostFormatted
+
+
 
         private string DateTimeFormatted()
         {
@@ -80,9 +110,11 @@ namespace Project_Playground.Project_Steps
             string spacing = "\n\n";
             string body = _body;
 
+            string dateAndHeader = DateAndHeader();
+
             Paragraph fullPost = new Paragraph();
        
-            fullPost.Inlines.Add(HeaderFormatted(_header));
+            fullPost.Inlines.Add(HeaderFormatted(dateAndHeader));
             fullPost.Inlines.Add(new Run(spacing));
             fullPost.Inlines.Add(BodyFormatted(_body));
 
@@ -91,7 +123,7 @@ namespace Project_Playground.Project_Steps
 
         private Run HeaderFormatted(string headerText)
         {
-            Run header = new Run(FormattedString());
+            Run header = new Run(headerText);
             header.FontSize = 22;
             header.FontWeight = FontWeights.Bold;
             header.Foreground = _headerForeground;
@@ -107,15 +139,14 @@ namespace Project_Playground.Project_Steps
             return body;
         }
 
-        public string FormattedString()
+        public string DateAndHeader()
         {
             return $"{DateTimeFormatted()} - {_header}";
         }
 
         public override string ToString()
         {
-            //return FormattedString();
-            return GetType().ToString();
+            return DateAndHeader();
         }
 
 
